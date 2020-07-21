@@ -1,0 +1,13 @@
+= magic-box
+
+== Communication interface
+
+.Cables
+. image:https://via.placeholder.com/15/ff0000/000000?text=+[] 5V Power supply
+. image:https://via.placeholder.com/15/000000/000000?text=+[] Ground
+. image:https://via.placeholder.com/15/ffff00/000000?text=+[] 0th bit of password digit
+. image:https://via.placeholder.com/15/800080/000000?text=+[] 1st bit of password digit
+. image:https://via.placeholder.com/15/ed7014/000000?text=+[] 2nd bit of password digit
+. image:https://via.placeholder.com/15/654321/000000?text=+[] 3rd bit of password digit
+. image:https://via.placeholder.com/15/32CD32/000000?text=+[] Synchronization clock
+

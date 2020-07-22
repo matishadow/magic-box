@@ -1,13 +1,78 @@
 = magic-box
 
-== Communication interface
+Some people say:
 
-.Cables
-. image:https://via.placeholder.com/15/ff0000/000000?text=+[] 5V Power supply
-. image:https://via.placeholder.com/15/000000/000000?text=+[] Ground
-. image:https://via.placeholder.com/15/ffff00/000000?text=+[] 0th bit of password digit
-. image:https://via.placeholder.com/15/800080/000000?text=+[] 1st bit of password digit
-. image:https://via.placeholder.com/15/ed7014/000000?text=+[] 2nd bit of password digit
-. image:https://via.placeholder.com/15/654321/000000?text=+[] 3rd bit of password digit
-. image:https://via.placeholder.com/15/32CD32/000000?text=+[] Synchronization clock
+> The best things in life come in small packages (:gem:).
+
+*_NO!_*
+
+> The best things in life come in highly secure packages :lock:!
+
+And when being in settled down age of 28 :birthday:, such things are exactly what you need.
+
+Oh, you know what. I take it back.
+There are no best things in the box, they're average at best.
+You can keep them though, happy birthday!!! :gift:
+
+== Why it's locked?
+It's locked to prevent other people from getting the contents.
+(Obviously.)
+Only you are mighty enough to open this mighty box.
+
+== :unlock: How to open
+You have received the box, so it's your box.
+And you should know how to open _your_ box.
+
+=== In case you forgot how to open
+Use protruding cables to provide your PIN code. :electric_plug:
+
+=== In case you forgot your PIN code
+That's too bad, try brute-forcing it or something.
+
+=== In case you really want to brute force opening it here are some tips
+
+* Your Raspberry Pi is all set. To SSH into it just:
+  . Power it on.
+  . Connect it to your router using Ethernet cable.
+  . Check your router to know what's the IP of your Raspberry Pi.
+  . Log in using `pi:raspberry` credentials.
+* To control voltages on Raspberry's pins either use
+  https://www.raspberrypi.org/documentation/usage/gpio/python/README.md[this python library]
+  or http://wiringpi.com/the-gpio-utility[this command line tool].
+* Cables have the following meanings:
+  ** image:https://via.placeholder.com/15/ff0000/000000?text=+[] 5V Power supply
+  ** image:https://via.placeholder.com/15/000000/000000?text=+[] Ground
+  ** image:https://via.placeholder.com/15/ffff00/000000?text=+[] 0th bit of password digit
+  ** image:https://via.placeholder.com/15/800080/000000?text=+[] 1st bit of password digit
+  ** image:https://via.placeholder.com/15/ed7014/000000?text=+[] 2nd bit of password digit
+  ** image:https://via.placeholder.com/15/654321/000000?text=+[] 3rd bit of password digit
+  ** image:https://via.placeholder.com/15/32CD32/000000?text=+[] Synchronization clock
+* To know meanings of the pins on Raspberry Pi you can use https://pinout.xyz/[this site].
+* Arduino inside the box needs to be powered by Raspberry Pi.
+  To do that connect the [red]#red cable# to 5V pin of Raspberry Pi,
+  and [black]#black cable# to ground pin of Raspberry Pi.
+* PIN code consists of 4 digits, it could be like `1234` or `5555`.
+* 4 green LEDs shows correctly inputted PIN digits.
+* To provide one PIN digit you need to:
+  . Set Raspberry pin connected to [green]#green cable# to `HIGH`.
+    It will also light the [yellow]#yellow LED# for two seconds.
+  . Within these two seconds set digit pins to voltages representing a digit (from 0 to 9) for example:
+    ** To send `4` set:
+      *** image:https://via.placeholder.com/15/ffff00/000000?text=+[] -> `LOW`
+      *** image:https://via.placeholder.com/15/800080/000000?text=+[] -> `LOW`
+      *** image:https://via.placeholder.com/15/ed7014/000000?text=+[] -> `HIGH`
+      *** image:https://via.placeholder.com/15/654321/000000?text=+[] -> `LOW`
+    ** To send `9` set:
+      *** image:https://via.placeholder.com/15/ffff00/000000?text=+[] -> `HIGH`
+      *** image:https://via.placeholder.com/15/800080/000000?text=+[] -> `LOW`
+      *** image:https://via.placeholder.com/15/ed7014/000000?text=+[] -> `LOW`
+      *** image:https://via.placeholder.com/15/654321/000000?text=+[] -> `HIGH`
+  . After two second Arduino will turn off the [yellow]#yellow LED# and *read the digit*.
+  . Set Raspberry pin connected to [green]#green cable# to `LOW`.
+* To provide a next digit just repeat the previous point.
+* When you provide a wrong PIN digit, input process starts from the beginning.
+* Read the Arduino code
+  https://github.com/matishadow/magic-box/blob/master/magic-box.ino[from this repository]
+* Good luck :four_leaf_clover:!
+
 
